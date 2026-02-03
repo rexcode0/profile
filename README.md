@@ -10,9 +10,14 @@ Short introduction about yourself.
 - 🧩 Current Focus:rust
 
 Write 3–5 lines describing who you are, what you enjoy building, and your career goals.
-i m ashish sharma , a lerner proces in the kernel of life , always reaching for new ideas and inovations , learning something new ayery now and then 
+Ashish Sharma // System Architect & Learner
+I am a learner process running in the kernel of life, optimized for constant innovation and high-velocity updates.
+The Processor: My mind operates on aggressive multithreading. What looks like overthinking is actually a high-bandwidth scan, allowing me to process multiple "sparse" topics simultaneously.
+The Advantage: I’ve turned a high frequency of interrupts into a feature. It allows me to context-switch rapidly between low-level C/Rust logic and the physical silicon of ESP32 and IoT systems.
+The Stack: From navigating Linux internals to building responsive web architectures, I bridge the gap between abstract code and raw hardware.
+I don’t follow a linear execution path. I am a non-linear thinker built for a multidimensional tech landscape.
 
-atough i m as student persuing diploma in computer science , interested in many sparse topics and languages , i have worked with languages like python , c , c++ , rust etc , have done some projects in web-development and have a good knowledge of linux and low level topics , also have worked with iot based projects and some famous microcontrollers , like esp32 arduino or esp32-c6 
+
 ---
 
 ## 🛠 Skills

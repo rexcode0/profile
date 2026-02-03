@@ -1,9 +1,5 @@
 /**
  * Projects Data - Ashish Sharma's Portfolio
- * 
- * Each project has:
- * - title, description, image, tags, liveUrl, repoUrl
- * - featured: true for projects shown on homepage
  */
 
 const projectsData = [
@@ -15,7 +11,7 @@ const projectsData = [
         liveUrl: "",
         repoUrl: "https://github.com/rexcode0/vibe",
         featured: true,
-        achievement: "🏆 1st Prize - State Level Hackathon"
+        achievement: "1st Prize - State Level Hackathon"
     },
     {
         title: "EcoDash",

@@ -70,11 +70,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    background: var(--color-primary);
     color: white;
     border-radius: var(--radius-md);
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-lg);
+}
+
+.skill-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 .skill-card h3 {
@@ -191,7 +196,7 @@
 .project-badge {
     display: inline-block;
     padding: var(--spacing-xs) var(--spacing-sm);
-    background: linear-gradient(135deg, var(--color-warning), #f97316);
+    background: var(--color-primary);
     color: white;
     border-radius: var(--radius-sm);
     font-size: var(--font-size-xs);
@@ -200,7 +205,15 @@
 }
 
 .project-placeholder-icon {
-    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.project-placeholder-icon svg {
+    width: 48px;
+    height: 48px;
 }
 
 /* --- Achievement Cards --- */
