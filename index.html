@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ashish Sharma - Developer portfolio showcasing projects in web development, embedded systems, and IoT">
+    <meta name="keywords" content="Ashish Sharma, portfolio, developer, embedded systems, IoT, web development">
+    <title>Ashish Sharma | Developer Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Ashish Sharma</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-greeting">Hello, I'm</span>
+                <h1 class="hero-name">Ashish Sharma</h1>
+                <p class="hero-title">Developer • Embedded Systems Enthusiast • Linux Lover</p>
+                <p class="hero-description">
+                    A learner in the kernel of life, always reaching for new ideas and innovations.
+                    Currently pursuing a diploma in Computer Science, passionate about low-level programming,
+                    web development, and IoT projects. Experienced with C, C++, Rust, Python, and modern web
+                    technologies.
+                </p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-wrapper">
+                    <img src="assets/profile.png" alt="Ashish Sharma" class="hero-profile-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm Ashish Sharma, a student pursuing a diploma in Computer Science at Government Polytechnic
+                        Kashipur.
+                        I'm passionate about exploring diverse topics and technologies — from low-level systems
+                        programming
+                        to modern web development and IoT solutions.
+                    </p>
+                    <p>
+                        I've worked with languages like Python, C, C++, Rust, and JavaScript. My projects span
+                        web development, embedded systems, and IoT — including work with ESP32, Arduino, and Raspberry
+                        Pi.
+                        I enjoy learning something new every day and turning ideas into working solutions.
+                    </p>
+                    <div class="about-details">
+                        <div class="about-detail-item">
+                            <span class="detail-icon">🎓</span>
+                            <div>
+                                <strong>Education</strong>
+                                <span>Diploma in CSE</span>
+                            </div>
+                        </div>
+                        <div class="about-detail-item">
+                            <span class="detail-icon">📍</span>
+                            <div>
+                                <strong>Location</strong>
+                                <span>Rudrapur, Uttarakhand</span>
+                            </div>
+                        </div>
+                        <div class="about-detail-item">
+                            <span class="detail-icon">🧩</span>
+                            <div>
+                                <strong>Current Focus</strong>
+                                <span>Rust Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">4+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Hackathon Wins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Skills will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Featured Only) -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Featured projects will be loaded here -->
+            </div>
+            <div class="section-cta">
+                <a href="projects.html" class="btn btn-outline">View All Projects →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section achievements" id="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="timeline" id="achievementsTimeline">
+                <!-- Timeline items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Links Only) -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content contact-content-centered">
+                <p class="contact-description">
+                    Interested in working together or have a question? Feel free to reach out through any of the
+                    following channels.
+                </p>
+                <div class="contact-links-horizontal">
+                    <a href="mailto:ashish31207@gmail.com" class="contact-card">
+                        <span class="contact-icon">✉</span>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">ashish31207@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ashish-sharma-a62369311/" target="_blank" class="contact-card">
+                        <span class="contact-icon">in</span>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">ashish-sharma</span>
+                    </a>
+                    <a href="https://github.com/rexcode0" target="_blank" class="contact-card">
+                        <span class="contact-icon">⌘</span>
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">rexcode0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Ashish Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data/skills.js"></script>
+    <script src="js/data/projects.js"></script>
+    <script src="js/data/achievements.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
