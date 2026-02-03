@@ -4,7 +4,7 @@
 
 /* --- CSS Variables / Design Tokens --- */
 :root {
-    /* Colors */
+    /* Colors - Light Mode (default) */
     --color-primary: #2563eb;
     --color-primary-dark: #1d4ed8;
     --color-primary-light: #3b82f6;
@@ -77,6 +77,40 @@
     /* Layout */
     --container-max-width: 1200px;
     --navbar-height: 70px;
+}
+
+/* --- Dark Mode Colors --- */
+[data-theme="dark"] {
+    --color-primary: #60a5fa;
+    --color-primary-dark: #3b82f6;
+    --color-primary-light: #93c5fd;
+
+    --color-bg: #0a0a0f;
+    --color-bg-alt: #12121a;
+    --color-bg-elevated: #1a1a24;
+
+    --color-text: #e8e8ed;
+    --color-text-muted: #a0a0b0;
+    --color-text-light: #6b6b7a;
+
+    --color-border: #2a2a3a;
+    --color-border-light: #1e1e28;
+
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6), 0 4px 8px -4px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 25px 35px -5px rgba(0, 0, 0, 0.7), 0 10px 15px -6px rgba(0, 0, 0, 0.6);
+}
+
+/* Dark mode navbar enhancement */
+[data-theme="dark"] .navbar {
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    background: rgba(10, 10, 15, 0.98);
 }
 
 /* --- Reset & Base Styles --- */
@@ -234,6 +268,56 @@ textarea {
     transition: var(--transition-fast);
 }
 
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-left: var(--spacing-lg);
+}
+
+.theme-toggle:hover {
+    background: var(--color-border);
+}
+
+.theme-toggle svg {
+    transition: var(--transition-fast);
+}
+
+/* Show sun icon by default (light mode), hide moon */
+.theme-toggle .sun-icon {
+    display: block;
+}
+
+.theme-toggle .moon-icon {
+    display: none;
+}
+
+/* In dark mode, show moon icon, hide sun */
+[data-theme="dark"] .theme-toggle .sun-icon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    display: block;
+}
+
+/* Dark mode hero gradient adjustment */
+[data-theme="dark"] .hero-profile-edge::after {
+    background: linear-gradient(135deg,
+            rgba(59, 130, 246, 0.05) 0%,
+            rgba(59, 130, 246, 0.12) 50%,
+            rgba(96, 165, 250, 0.08) 100%);
+}
+
 /* --- Hero Section --- */
 .hero {
     min-height: 100vh;
@@ -306,47 +390,74 @@ textarea {
 }
 
 /* --- Profile Image Edge Layout --- */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
 .hero-content-full {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: calc(100vh - var(--navbar-height));
     position: relative;
+    z-index: 3;
 }
 
 .hero-text-container {
     flex: 1;
-    padding-right: var(--spacing-3xl);
+    max-width: 600px;
+    z-index: 3;
 }
 
 .hero-profile-edge {
-    position: relative;
-    flex-shrink: 0;
-    width: 400px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 55%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Subtle gradient background behind the transparent image */
+.hero-profile-edge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(135deg,
+            rgba(37, 99, 235, 0.03) 0%,
+            rgba(37, 99, 235, 0.08) 50%,
+            rgba(59, 130, 246, 0.05) 100%);
+    z-index: 0;
 }
 
 .hero-profile-image {
-    width: 350px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 0;
-    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 15% 100%, 0% 50%);
-    box-shadow: var(--shadow-xl);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+    opacity: 0.85;
+    z-index: 1;
 }
 
-/* Old profile styles kept for fallback */
-.hero-image-wrapper {
-    position: relative;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    padding: 5px;
-    background: var(--color-primary);
-    box-shadow: var(--shadow-xl);
+/* Fade overlay from left - blends image into content area */
+.hero-profile-edge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 5%, transparent 50%);
+    z-index: 2;
 }
 
 @keyframes float {
@@ -785,27 +896,16 @@ textarea {
     }
 
     .hero-content-full {
-        flex-direction: column;
         text-align: center;
     }
 
     .hero-text-container {
-        padding-right: 0;
-        order: 2;
+        max-width: 100%;
     }
 
+    /* Hide profile image on tablet/mobile */
     .hero-profile-edge {
-        width: 100%;
-        justify-content: center;
-        order: 1;
-        margin-bottom: var(--spacing-xl);
-    }
-
-    .hero-profile-image {
-        width: 280px;
-        height: 280px;
-        clip-path: none;
-        border-radius: var(--radius-xl);
+        display: none;
     }
 
     .hero-description {

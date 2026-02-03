@@ -4,6 +4,49 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+    // --- Theme Toggle ---
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    // Check for saved theme preference or system preference
+    function getPreferredTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        // Check system preference
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Apply theme
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.removeAttribute('data-theme');
+        }
+        localStorage.setItem('theme', theme);
+    }
+
+    // Initialize theme
+    setTheme(getPreferredTheme());
+
+    // Toggle theme on button click
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+
     // --- Mobile Navigation Toggle ---
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
@@ -114,26 +157,102 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- Intersection Observer for Animations ---
+    // --- Intersection Observer for Scroll Animations ---
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    // Animation variants
+    const animations = {
+        slideUp: {
+            initial: { opacity: 0, transform: 'translateY(60px)' },
+            animate: { opacity: 1, transform: 'translateY(0)' }
+        },
+        slideLeft: {
+            initial: { opacity: 0, transform: 'translateX(-60px)' },
+            animate: { opacity: 1, transform: 'translateX(0)' }
+        },
+        slideRight: {
+            initial: { opacity: 0, transform: 'translateX(60px)' },
+            animate: { opacity: 1, transform: 'translateX(0)' }
+        },
+        scaleUp: {
+            initial: { opacity: 0, transform: 'scale(0.85)' },
+            animate: { opacity: 1, transform: 'scale(1)' }
+        },
+        blurIn: {
+            initial: { opacity: 0, filter: 'blur(10px)', transform: 'translateY(30px)' },
+            animate: { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }
+        }
+    };
+
+    const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                const el = entry.target;
+                const anim = animations[el.dataset.animation] || animations.slideUp;
+
+                Object.assign(el.style, {
+                    opacity: anim.animate.opacity,
+                    transform: anim.animate.transform,
+                    filter: anim.animate.filter || ''
+                });
+
+                animationObserver.unobserve(el);
             }
         });
     }, observerOptions);
 
-    // Observe cards for fade-in animation
-    document.querySelectorAll('.skill-card, .project-card, .achievement-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(card);
+    // Apply animations to different elements with variety
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach((card, index) => {
+        const animType = index % 2 === 0 ? 'slideLeft' : 'slideRight';
+        const anim = animations[animType];
+        card.dataset.animation = animType;
+        Object.assign(card.style, {
+            opacity: anim.initial.opacity,
+            transform: anim.initial.transform,
+            transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s`
+        });
+        animationObserver.observe(card);
+    });
+
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        const anim = animations.scaleUp;
+        card.dataset.animation = 'scaleUp';
+        Object.assign(card.style, {
+            opacity: anim.initial.opacity,
+            transform: anim.initial.transform,
+            transition: `opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.15}s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.15}s`
+        });
+        animationObserver.observe(card);
+    });
+
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+        const animType = index % 2 === 0 ? 'slideLeft' : 'slideRight';
+        const anim = animations[animType];
+        item.dataset.animation = animType;
+        Object.assign(item.style, {
+            opacity: anim.initial.opacity,
+            transform: anim.initial.transform,
+            transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s`
+        });
+        animationObserver.observe(item);
+    });
+
+    // Section titles with blur effect
+    document.querySelectorAll('.section-header').forEach((header, index) => {
+        const anim = animations.blurIn;
+        header.dataset.animation = 'blurIn';
+        Object.assign(header.style, {
+            opacity: anim.initial.opacity,
+            transform: anim.initial.transform,
+            filter: anim.initial.filter,
+            transition: 'opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease'
+        });
+        animationObserver.observe(header);
     });
 });

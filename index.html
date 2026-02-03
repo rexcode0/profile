@@ -33,21 +33,42 @@
                 <li><a href="#achievements" class="nav-link">Achievements</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-profile-edge">
+            <img src="assets/profile.png" alt="Ashish Sharma" class="hero-profile-image">
+        </div>
         <div class="hero-content-full">
             <div class="container hero-text-container">
                 <div class="hero-text">
                     <span class="hero-greeting">Hello, I'm</span>
                     <h1 class="hero-name">Ashish Sharma</h1>
-                    <p class="hero-title">Developer • Embedded Systems Enthusiast • Linux Lover</p>
+                    <p class="hero-title">Linux Enthusiast & System Architect</p>
                     <p class="hero-description">
-                        A learner in the kernel of life, always reaching for new ideas and innovations.
-                        Currently pursuing a diploma in Computer Science, passionate about low-level programming,
-                        web development, and IoT projects. Experienced with C, C++, Rust, Python, and modern web
+                        A learner process running in the kernel of life, optimized for constant innovation.
+                        I bridge the gap between abstract code and raw hardware — from navigating Linux internals
+                        to building responsive web architectures. Experienced with C, Rust, ESP32, and modern web
                         technologies.
                     </p>
                     <div class="hero-cta">
@@ -55,9 +76,6 @@
                         <a href="#contact" class="btn btn-outline">Get In Touch</a>
                     </div>
                 </div>
-            </div>
-            <div class="hero-profile-edge">
-                <img src="assets/profile.png" alt="Ashish Sharma" class="hero-profile-image">
             </div>
         </div>
     </section>
