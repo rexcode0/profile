@@ -193,10 +193,6 @@ document.addEventListener('DOMContentLoaded', function () {
         scaleUp: {
             initial: { opacity: 0, transform: 'scale(0.85)' },
             animate: { opacity: 1, transform: 'scale(1)' }
-        },
-        blurIn: {
-            initial: { opacity: 0, filter: 'blur(10px)', transform: 'translateY(30px)' },
-            animate: { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }
         }
     };
 
@@ -254,18 +250,5 @@ document.addEventListener('DOMContentLoaded', function () {
             transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.12}s`
         });
         animationObserver.observe(item);
-    });
-
-    // Section titles with blur effect
-    document.querySelectorAll('.section-header').forEach((header, index) => {
-        const anim = animations.blurIn;
-        header.dataset.animation = 'blurIn';
-        Object.assign(header.style, {
-            opacity: anim.initial.opacity,
-            transform: anim.initial.transform,
-            filter: anim.initial.filter,
-            transition: 'opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease'
-        });
-        animationObserver.observe(header);
     });
 });

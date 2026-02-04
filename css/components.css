@@ -286,17 +286,4 @@
     margin-top: var(--spacing-md);
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .achievements-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Responsive adjustments handled by minmax(min(X, 100%), 1fr) pattern in grids */

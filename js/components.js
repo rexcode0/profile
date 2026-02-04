@@ -45,15 +45,10 @@ function renderSkills() {
     `).join('');
 }
 
-// Render Featured Project Cards (for homepage)
-function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    if (!grid || typeof projectsData === 'undefined') return;
-
-    const featuredProjects = projectsData.filter(p => p.featured);
-
-    grid.innerHTML = featuredProjects.map(project => `
-        <div class="project-card">
+// Generate project card HTML (shared helper)
+function createProjectCardHTML(project, extraClass = '') {
+    return `
+        <div class="project-card${extraClass ? ' ' + extraClass : ''}">
             <div class="project-image">
                 ${project.image
             ? `<img src="${project.image}" alt="${project.title}">`
@@ -67,16 +62,21 @@ function renderProjects() {
                     ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                 </div>
                 <div class="project-links">
-                    ${project.liveUrl
-            ? `<a href="${project.liveUrl}" target="_blank" class="project-link">Live Demo</a>`
-            : ''}
-                    ${project.repoUrl
-            ? `<a href="${project.repoUrl}" target="_blank" class="project-link">View Code</a>`
-            : ''}
+                    ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" class="project-link">Live Demo</a>` : ''}
+                    ${project.repoUrl ? `<a href="${project.repoUrl}" target="_blank" class="project-link">View Code</a>` : ''}
                 </div>
             </div>
         </div>
-    `).join('');
+    `;
+}
+
+// Render Featured Project Cards (for homepage)
+function renderProjects() {
+    const grid = document.getElementById('projectsGrid');
+    if (!grid || typeof projectsData === 'undefined') return;
+
+    const featuredProjects = projectsData.filter(p => p.featured);
+    grid.innerHTML = featuredProjects.map(p => createProjectCardHTML(p)).join('');
 }
 
 // Render All Project Cards (for projects page)
@@ -84,31 +84,7 @@ function renderAllProjects() {
     const grid = document.getElementById('allProjectsGrid');
     if (!grid || typeof projectsData === 'undefined') return;
 
-    grid.innerHTML = projectsData.map(project => `
-        <div class="project-card project-card-detailed">
-            <div class="project-image">
-                ${project.image
-            ? `<img src="${project.image}" alt="${project.title}">`
-            : `<span class="project-placeholder-icon">${getIcon('code')}</span>`}
-            </div>
-            <div class="project-content">
-                ${project.achievement ? `<span class="project-badge">${project.achievement}</span>` : ''}
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                <div class="project-tags">
-                    ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                </div>
-                <div class="project-links">
-                    ${project.liveUrl
-            ? `<a href="${project.liveUrl}" target="_blank" class="project-link">Live Demo</a>`
-            : ''}
-                    ${project.repoUrl
-            ? `<a href="${project.repoUrl}" target="_blank" class="project-link">View Code</a>`
-            : ''}
-                </div>
-            </div>
-        </div>
-    `).join('');
+    grid.innerHTML = projectsData.map(p => createProjectCardHTML(p, 'project-card-detailed')).join('');
 }
 
 // Render Timeline Achievements

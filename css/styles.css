@@ -1118,11 +1118,6 @@ textarea {
         left: 12px;
         right: auto;
     }
-
-    .hero-image-wrapper {
-        width: 250px;
-        height: 250px;
-    }
 }
 
 @media (max-width: 480px) {
