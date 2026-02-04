@@ -907,9 +907,54 @@ textarea {
         max-width: 100%;
     }
 
-    /* Hide profile image on tablet/mobile */
+    /* Show profile image as background on tablet/mobile */
     .hero-profile-edge {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(135deg,
+                rgba(37, 99, 235, 0.08) 0%,
+                rgba(59, 130, 246, 0.15) 50%,
+                rgba(96, 165, 250, 0.1) 100%);
+    }
+
+    [data-theme="dark"] .hero-profile-edge {
+        background: linear-gradient(135deg,
+                rgba(59, 130, 246, 0.1) 0%,
+                rgba(96, 165, 250, 0.18) 50%,
+                rgba(147, 197, 253, 0.1) 100%);
+    }
+
+    /* Remove the ::before and ::after overlays on mobile */
+    .hero-profile-edge::before,
+    .hero-profile-edge::after {
         display: none;
+    }
+
+    .hero-profile-image {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: auto;
+        transform: translateY(-50%);
+        width: auto;
+        height: 90%;
+        max-width: 75%;
+        object-fit: contain;
+        object-position: right center;
+        opacity: 0.9;
+        z-index: 1;
+    }
+
+    .hero-content-full {
+        z-index: 5;
     }
 
     .hero-description {
