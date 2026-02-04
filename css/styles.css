@@ -945,16 +945,47 @@ textarea {
         left: auto;
         transform: translateY(-50%);
         width: auto;
-        height: 90%;
-        max-width: 75%;
+        height: 100%;
+        max-width: 100%;
         object-fit: contain;
         object-position: right center;
-        opacity: 0.9;
+        opacity: 1;
         z-index: 1;
     }
 
     .hero-content-full {
         z-index: 5;
+        align-items: flex-start;
+        min-height: auto;
+        padding-top: var(--spacing-sm);
+    }
+
+    .hero-text-container {
+        background: transparent;
+        padding: var(--spacing-md);
+        backdrop-filter: none;
+    }
+
+    /* Hide all hero text on mobile - only show the image */
+    .hero-text .hero-greeting,
+    .hero-text .hero-title,
+    .hero-text .hero-description,
+    .hero-text .hero-cta,
+    .hero-text .hero-name {
+        display: none;
+    }
+
+    /* Style only the name */
+    .hero-text .hero-name {
+        font-size: 2.5rem;
+        font-weight: var(--font-weight-bold);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        margin-bottom: 0;
+        color: var(--color-text);
+    }
+
+    [data-theme="dark"] .hero-text .hero-name {
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero-description {
