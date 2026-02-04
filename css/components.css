@@ -45,7 +45,7 @@
 /* --- Skill Cards --- */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: var(--spacing-xl);
 }
 
@@ -56,6 +56,8 @@
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border-light);
     transition: var(--transition-normal);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .skill-card:hover {
@@ -113,7 +115,7 @@
 /* --- Project Cards --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: var(--spacing-xl);
 }
 
@@ -124,6 +126,8 @@
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border-light);
     transition: var(--transition-normal);
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .project-card:hover {
@@ -219,7 +223,7 @@
 /* --- Achievement Cards --- */
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: var(--spacing-xl);
 }
 

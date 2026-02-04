@@ -18,6 +18,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
+    // Update profile image based on theme
+    function updateProfileImage(theme) {
+        const profileImage = document.getElementById('heroProfileImage');
+        if (profileImage) {
+            if (theme === 'dark') {
+                profileImage.src = 'assets/dprofile.png';
+            } else {
+                profileImage.src = 'assets/lprofile.png';
+            }
+        }
+    }
+
     // Apply theme
     function setTheme(theme) {
         if (theme === 'dark') {
@@ -26,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             html.removeAttribute('data-theme');
         }
         localStorage.setItem('theme', theme);
+        updateProfileImage(theme);
     }
 
     // Initialize theme

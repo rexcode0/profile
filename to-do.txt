@@ -1,0 +1,1 @@
+make teh profile pic visible on mobile devices , commit these changes first tehn push it online , then update it such that lprofile wil be used fro light mode and dprofile will be used for dark profile
